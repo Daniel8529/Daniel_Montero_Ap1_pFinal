@@ -1,0 +1,151 @@
+@page "/Consultar_Grupos"
+
+<EditForm Model="grupos" OnValidSubmit="Buscar">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="card">
+
+
+        <div class="card-header">
+            <h3>Consulta</h3>
+        </div>
+
+        <div class="card-body">
+            <form>
+                <div class="input-group d-flex align-items-end">
+                    <div class="flex-fill mx-2">
+                        <label>Filtro</label>
+                        <select class="form-control col-2" @bind="Filtro">
+                            <option value="0"></option>
+                            <option value="1">Id</option>
+                            <option value="2">Aula Id</option>
+                            <option value="3">Descripcion</option>
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="flex-fill mx-2">
+                        <label>Criterio</label>
+                        <input type="text" class="form-control" @bind="Criterio" />
+                    </div>
+
+                    <button type="button" class="btn btn-warning" @onclick="Buscar">
+                        <i class="oi oi-magnifying-glass mr-2" /> Buscar
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr class="table-info">
+                    <th>Curso Id</th>
+                    <th>Aula Id</th>
+                    <th>Profesor Id</th>
+                    <th>Descripcion</th>
+                    <th>Capacidad</th>
+                    <th>Cupo Disponible</th>
+                    <th>Desde</th>
+                    <th>Hasta</th>
+                    <th>Tiempo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in lista)
+                {
+                    <tr>
+                        <td>@item.CursoId</td>
+                        <td>@item.AulaId</td>
+                        <td>@item.ProfesorId</td>
+                        <td>@item.DescripcionCurso</td>
+                        <td>@item.Capacidad</td>
+                        <td>@item.CuposDisponible</td>
+                        <td>@item.Desde</td>
+                        <td>@item.Hasta</td>
+                        <td>@item.Tiempo</td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+</EditForm>
+
+@code {
+    
+     
+     public Grupos grupos {set;get;}= new Grupos();
+    
+     public List<Grupos> lista { get; set; } = new List<Grupos>();
+     [Inject]
+    public TodoBLLModelCreating todoBLLModelCreating{ get; set; }
+
+    public string? Filtro { get; set; }
+    public string? Criterio { get; set; }
+    public void Buscar()
+    {
+        lista =todoBLLModelCreating.GeListaGrupos();
+
+
+        if (Criterio != null)
+
+        {
+
+            switch (Filtro)
+
+            {
+
+                case "0":
+
+                    lista =todoBLLModelCreating.GeListaGrupos();
+
+                    break;
+
+                case "1":
+
+
+                    lista =todoBLLModelCreating.GetListGrupos(l => l.GrupoId.ToString() == (Criterio));
+
+
+                    break;
+
+
+                case "2":
+
+                    lista =todoBLLModelCreating.GetListGrupos(l =>l.AulaId.ToString()==(Criterio.ToLower()));
+                    break;
+
+                case "3":
+
+                    lista =todoBLLModelCreating.GetListGrupos(l => l.DescripcionCurso.ToLower().Contains(Criterio.ToLower()));
+                    break;
+
+
+
+
+            }
+
+        }
+
+        else
+
+        {
+
+            lista =todoBLLModelCreating.GetListGrupos(t => true);
+
+        }
+
+
+
+    }
+
+
+
+}
