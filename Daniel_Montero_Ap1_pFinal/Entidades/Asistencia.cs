@@ -11,11 +11,17 @@ namespace Daniel_Montero_Ap1_pFinal.Entidades
        [Range(0,int.MaxValue,ErrorMessage ="El Id tiene que ser 0")]
        public int AsistenciaId {get; set;}
      
+      public  DateTime Fecha { get; set; }= DateTime.Now;
 
-        public  DateTime Fecha { get; set; }= DateTime.Now;
-        public int GrupoId {get; set; }
-        public string? Presente {get; set ;}
-        public string? Ausentes {get; set ;}
+       [Range(1,int.MaxValue,ErrorMessage ="El selecionar un grupo")]
+         public int GrupoId {get; set; }
+
+         [Required(ErrorMessage ="Es obligatorio introducir una Descripcion")]
+        public int  Presente {get; set ;}
+        public int Ausente {get; set ;}
+
+        public int estudianteId {get; set ;}
+      
         public virtual List<AsistenciaDetalle> asistenciadetalle {get; set;} = new List<AsistenciaDetalle>();
 
    }

@@ -67,6 +67,21 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
             return encontrado;
 
         }
+        public bool VerificarEstudianteRepetido(Asistencia asistencia, AsistenciaDetalle Detalle)
+        {
+         bool estudiante = false;
+        foreach (var item in asistencia.asistenciadetalle)
+        {
+            if (item.EstudianteId== Detalle.EstudianteId)
+            {
+                estudiante = true;
+                break;
+            }
+        }
+        return estudiante;
+        
+
+      }
         private bool Modificar(Asistencia asistencia)
         {
             bool paso = false;
@@ -159,9 +174,30 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
 
             return lista;
         }
+        public List<AsistenciaDetalle> GetListAsistenciaDetalle(Expression<Func<AsistenciaDetalle, bool>> criterio)
+        {
+
+            List<AsistenciaDetalle> lista = new List<AsistenciaDetalle>();
+            try
+            {
+                lista = contexto.AsistenciaDetalles.Where(criterio).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return lista;
+        }
+    
         public List<Asistencia> GeLista()
         {
             return contexto.Asistencia.ToList();
+
+        }
+         public List<AsistenciaDetalle> GeListaAsistenciaDetalle()
+        {
+            return contexto.AsistenciaDetalles.ToList();
 
         }
     }

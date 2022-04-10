@@ -9,6 +9,7 @@ namespace Daniel_Montero_Ap1_pFinal.DAL
 
         public DbSet<Asistencia> Asistencia{get; set;}
         
+        public DbSet<AsistenciaDetalle> AsistenciaDetalles{get; set;}
 
         public DbSet<Aulas> Aulas{ get; set;}
       
@@ -40,8 +41,7 @@ namespace Daniel_Montero_Ap1_pFinal.DAL
                 DescripcionCurso="Programacion Aplicada",
                 AulaId=1,
                 CursoId=1,
-                Desde="01/04/2022",
-                Hasta="027/04/2022",
+                Fecha=new DateTime(2010,5,5),
                 Tiempo=4,
                 Capacidad=40,
                 CuposDisponible=10
@@ -52,8 +52,7 @@ namespace Daniel_Montero_Ap1_pFinal.DAL
                 DescripcionCurso="Programacion 1",
                 AulaId=2,
                 CursoId=2,
-                Desde="02/04/2022",
-                Hasta="020/04/2022",
+                Fecha=new DateTime(2018,5,5),
                 Tiempo=3,
                 Capacidad=30,
                 CuposDisponible=15
@@ -63,22 +62,37 @@ namespace Daniel_Montero_Ap1_pFinal.DAL
               );
                modelBuilder.Entity<Estudiantes>().HasData(new Estudiantes{
                   EstudianteId=1,
-                  Nombre="Pedro",
+                  Nombre="Marioa",
                   Apellido="Teto",
                   Sexo="M",
-                  Direccion="Teteo ramires#57",
+                  Direccion="Teteo ramirez#57",
                   Telefono=809028329,
-                  Email="Teteo57@gmail.com"
+                  Email="Teteo57@gmail.com",
+                  Presente=0,
+                  Ausente=0
 
                },new Estudiantes{
 
                  EstudianteId=2,
-                  Nombre="Maria",
-                  Apellido="Molineo" ,
+                  Nombre="Luigi",
+                  Apellido="Delta" ,
                   Sexo="F",
-                  Direccion="Teteo ramires#57",
+                  Direccion="Teteo ramirez#57",
                   Telefono=809323423,
-                  Email="Molineo57@gmail.com"
+                  Email="Maria57@gmail.com",
+                  Presente=0,
+                  Ausente=0
+               },new Estudiantes{
+
+                 EstudianteId=3,
+                  Nombre="Juan",
+                  Apellido="Mosquea" ,
+                  Sexo="F",
+                  Direccion="Alcariso ramirez#57",
+                  Telefono=809323423,
+                  Email="Molineo57@gmail.com",
+                  Presente=0,
+                  Ausente=0
                }
                );
               modelBuilder.Entity<Profesores>().HasData(new Profesores{

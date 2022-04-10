@@ -10,11 +10,10 @@ namespace Daniel_Montero_Ap1_pFinal.Entidades
         public string? DescripcionCurso { get; set; }
         public int AulaId { get; set; }
         public int CursoId { get; set; }
-        public string? Desde { get; set; } 
-        public string? Hasta { get; set; }
+        public DateTime Fecha { get; set; } 
         public int Tiempo { get; set; }
-        public decimal Capacidad { get; set; } 
-        public decimal CuposDisponible { get; set; }
+        public int Capacidad { get; set; } 
+        public int CuposDisponible { get; set; }
 
     }
 }

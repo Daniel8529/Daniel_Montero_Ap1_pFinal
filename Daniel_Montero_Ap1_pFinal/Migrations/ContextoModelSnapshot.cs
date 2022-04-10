@@ -23,8 +23,8 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Ausentes")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Ausente")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
@@ -32,8 +32,11 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                     b.Property<int>("GrupoId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Presente")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Presente")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("estudianteId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("AsistenciaId");
 
@@ -49,18 +52,27 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                     b.Property<int>("AsistenciaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Asistio")
+                    b.Property<bool>("Asistio")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Ausente")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EstudianteId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("EstudianteId")
+                    b.Property<int>("Presente")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AsistenciaId");
 
-                    b.ToTable("AsistenciaDetalle");
+                    b.ToTable("AsistenciaDetalles");
                 });
 
             modelBuilder.Entity("Daniel_Montero_Ap1_pFinal.Entidades.Aulas", b =>
@@ -70,10 +82,8 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("VecesAsignada")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("AulaId");
 
@@ -87,10 +97,8 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Descripcion")
+                        .IsRequired()
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("VecesInscrito")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("CursoId");
 
@@ -106,6 +114,9 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                     b.Property<string>("Apellido")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Ausente")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Direccion")
                         .HasColumnType("TEXT");
 
@@ -114,6 +125,9 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
 
                     b.Property<string>("Nombre")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("Presente")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Sexo")
                         .HasColumnType("TEXT");
@@ -130,19 +144,35 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                         {
                             EstudianteId = 1,
                             Apellido = "Teto",
-                            Direccion = "Teteo ramires#57",
+                            Ausente = 0,
+                            Direccion = "Teteo ramirez#57",
                             Email = "Teteo57@gmail.com",
-                            Nombre = "Pedro",
+                            Nombre = "Marioa",
+                            Presente = 0,
                             Sexo = "M",
                             Telefono = 809028329
                         },
                         new
                         {
                             EstudianteId = 2,
-                            Apellido = "Molineo",
-                            Direccion = "Teteo ramires#57",
+                            Apellido = "Delta",
+                            Ausente = 0,
+                            Direccion = "Teteo ramirez#57",
+                            Email = "Maria57@gmail.com",
+                            Nombre = "Luigi",
+                            Presente = 0,
+                            Sexo = "F",
+                            Telefono = 809323423
+                        },
+                        new
+                        {
+                            EstudianteId = 3,
+                            Apellido = "Mosquea",
+                            Ausente = 0,
+                            Direccion = "Alcariso ramirez#57",
                             Email = "Molineo57@gmail.com",
-                            Nombre = "Maria",
+                            Nombre = "Juan",
+                            Presente = 0,
                             Sexo = "F",
                             Telefono = 809323423
                         });
@@ -157,11 +187,11 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                     b.Property<int>("AulaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Capacidad")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Capacidad")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("CuposDisponible")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CuposDisponible")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CursoId")
                         .HasColumnType("INTEGER");
@@ -169,10 +199,7 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                     b.Property<string>("DescripcionCurso")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Desde")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Hasta")
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ProfesorId")
@@ -190,12 +217,11 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                         {
                             GrupoId = 1,
                             AulaId = 1,
-                            Capacidad = 40m,
-                            CuposDisponible = 10m,
+                            Capacidad = 40,
+                            CuposDisponible = 10,
                             CursoId = 1,
                             DescripcionCurso = "Programacion Aplicada",
-                            Desde = "01/04/2022",
-                            Hasta = "027/04/2022",
+                            Fecha = new DateTime(2010, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProfesorId = 1,
                             Tiempo = 4
                         },
@@ -203,12 +229,11 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                         {
                             GrupoId = 2,
                             AulaId = 2,
-                            Capacidad = 30m,
-                            CuposDisponible = 15m,
+                            Capacidad = 30,
+                            CuposDisponible = 15,
                             CursoId = 2,
                             DescripcionCurso = "Programacion 1",
-                            Desde = "02/04/2022",
-                            Hasta = "020/04/2022",
+                            Fecha = new DateTime(2018, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ProfesorId = 2,
                             Tiempo = 3
                         });

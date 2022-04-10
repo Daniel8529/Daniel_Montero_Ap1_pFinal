@@ -1,0 +1,92 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Daniel_Montero_Ap1_pFinal
+build_property.RootNamespace = Daniel_Montero_Ap1_pFinal
+build_property.ProjectDir = C:\Users\Daniel\Documents\PROGRAMACION APLICADA 1\Proyecto Final\l\Daniel_Montero_Ap1_pFinal\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Daniel\Documents\PROGRAMACION APLICADA 1\Proyecto Final\l\Daniel_Montero_Ap1_pFinal
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Consultar_Asistencia.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFyX0FzaXN0ZW5jaWEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Consultar_AsitenciaDetalle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFyX0FzaXRlbmNpYURldGFsbGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Consultar_Aulas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFyX0F1bGFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Consultar_Curso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFyX0N1cnNvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Consultar_Estudiantes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFyX0VzdHVkaWFudGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Consultar_Grupos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFyX0dydXBvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Consultar_Profesores.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdGFyX1Byb2Zlc29yZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/R_Asistencia.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUl9Bc2lzdGVuY2lhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/R_Aulas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUl9BdWxhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/R_Curso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUl9DdXJzby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-enkgq0gv5z
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-hqgfk0ksj1
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Daniel/Documents/PROGRAMACION APLICADA 1/Proyecto Final/l/Daniel_Montero_Ap1_pFinal/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

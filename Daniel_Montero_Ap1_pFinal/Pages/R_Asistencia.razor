@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <form>
 
-                        @*Producto id*@
+                        @*Asistencia id*@
 
                         <div class="form-row align-items-center">
 
@@ -48,11 +48,11 @@
                         </div>
 
 
-                        @* Descricion *@
+                        @* Grupo *@
                         <div class="form-group">
                             <label>Grupo</label>
-                           <InputSelect class="form-control col-2" @bind-Value="grupos.GrupoId">
-                                    
+                           <InputSelect class="form-select text-14" @bind-Value="asistencia.GrupoId">
+                                    <option value="null"> </option>
                                         @foreach (var item in Listagrupo)
                                         {
                                             
@@ -60,22 +60,15 @@
                             
                                         }
                             </InputSelect>
+                             <ValidationMessage For="@(() =>asistencia.GrupoId)" />
                         </div>
-                        @* Exitencia *@
-                        <div class="form-group">
-                            <label>Presente</label>
-                            <InputText class="form-control" @bind-Value="asistencia.Presente" />
-                            <ValidationMessage For="@(() =>asistencia.Presente)" />
-                        </div>
-                        @* Costo *@
-                        <div class="form-group">
-                            <label>Ausentes</label>
-                            <InputText class="form-control" @bind-Value="asistencia.Ausentes" />
-                            <ValidationMessage For="@(() =>asistencia.Ausentes)" />
-                        </div>
+                       
+                         <label>  </label>
+                       
                     
-                        @* FechaCaducidad *@
-
+                    
+                        @* Fecha *@
+                         <label>  </label>
                         <div Class="form-group">
 
                             <label>Fecha</label>
@@ -83,15 +76,10 @@
 
                             <div class="input-group">
 
-                                <span class="input-group-text">Fecha de Caducidad</span>
-
-
-
+                                <span class="input-group-text">Fecha</span>
                                 <input type="date" @bind-value="asistencia.Fecha" />
-
-                                <ValidationMessage For="@(() => asistencia.Fecha)" />
-
                             </div>
+                            <ValidationMessage For="@(() => asistencia.Fecha)" />
 
                         </div>
 
@@ -114,32 +102,32 @@
 
                                 <div class="input-group">
                                 
-                                    <div class="flex-fill mx-2">
-                                        <label>ID</label>
-                                    <InputNumber readonly class="form-control" @bind-Value="Detalle.Id"
-                                            placeholder="Presentacio del detalle" />
-                                    </div>
-                                    <div class="flex-fill mx-2">
-                                        <label> AsistenciaId </label>
-                                        <InputNumber readonly class="form-control" @bind-Value="Detalle.AsistenciaId" />
-
-                                    </div>
+                                   
                                     <div class="flex-fill mx-2">
                                         <label>EstudianteId</label>
-                                        <InputSelect class="form-control col-2" @bind-Value="estudiantes.EstudianteId">
-                                    
-                                        @foreach (var item in Listaestudiante)
-                                        {
-                                            
-                                            <option value="@item.EstudianteId">@item.Nombre</option>
-                            
-                                        }
-                                      </InputSelect>
                                        
+                               
+                                        <InputSelect class="form-control col-2" @bind-Value="Detalle.EstudianteId">
+                                              
+                                                @foreach (var item in Listaestudiante)
+                                                {
+                                                    
+                                                    <option value="@item.EstudianteId">@item.Nombre</option>
+                                    
+                                                }
+                                        </InputSelect>
+                                         <ValidationMessage For="@(() =>Detalle.EstudianteId)" />
                                     </div>
-                                    <div class="flex-fill mx-2">
+                                        
+                                    <div class="flex-fill mx-3">
                                         <label>Asistio</label>
-                                        <InputText class="form-control" @bind-Value="Detalle.Asistio" />
+                                        <InputRadioGroup class="from-control" @bind-Value="Filtro" >
+                                         <label>Si</label> 
+                                        <InputRadio class="form-check-input" type="radio" Value="1"/>
+                                        <label>No</label>
+                                        <InputRadio class="form-check-input" type="radio" Value="2"/>
+                                        </InputRadioGroup>
+                                        <ValidationMessage For="@(() => Detalle.Asistio)" />
                                     </div>
                                     
 
@@ -154,33 +142,38 @@
                     <table class="table table-light">
                         <thead class="thead">
                             <tr class="table">
-                                <th>Id</th>
-                                <th>AsistenciaId</th>
                                 <th>EstudianteId</th>
                                 <th>Asistio</th>
+                                <th>Nombre</th>
                             </tr>
                         </thead>
 
                          <tbody>
                             @foreach (var item in asistencia.asistenciadetalle)
                             {
-                                
                                 <tr>
-                                    <td>@item.Id</td>
-                                    <td>@item.AsistenciaId</td>
-                                     <td>@item.EstudianteId</td>
-                                      <td>@item.Asistio</td>
-                                  
+                                    <td>@item.EstudianteId</td>
+                                    <td>@item.Asistio</td>
+                                    <td>@item.Nombre</td>
                                     <td><span class="btn btn-sm btn-outline-primary oi oi-ban" href="#"
-                                        @onclick="@(() => RemoverFila(item))"> Remover</span> </td> 
-                                    
+                                        @onclick="@(() => RemoverFila(item))"> Remover</span> </td>
                                 </tr>
                             }
                         </tbody> 
 
-
-
                     </table>
+                     <div class="form-group">
+                           <div class="form-group text-center" display: inline-block>
+                                <label>Presente</label>
+                                <InputNumber readonly class="lg " @bind-Value="asistencia.Presente" />
+                                <label>Ausente</label>
+                                <InputNumber readonly class="lg " @bind-Value="asistencia.Ausente" />
+                            </div>
+                    </div>  
+                    <label >
+
+                    </label>
+               
                     <div class="card-footer">
 
                         <div class="form-group text-center" display: inline-block>
@@ -206,17 +199,23 @@
     [Parameter]
     public int ID  { get; set; }
     public Asistencia asistencia {set;get;}= new Asistencia();
-    public AsistenciaDetalle Detalle =new AsistenciaDetalle(0,0,"");
+    public AsistenciaDetalle Detalle =new AsistenciaDetalle(0,0,false,"",0,0);
     public Estudiantes estudiantes= new Estudiantes();
     public List<Estudiantes> Listaestudiante = new List<Estudiantes>();
-
+  
     public Grupos grupos= new Grupos();
+    public int cantidad { get; set; }
+    public int cantidadsss { get; set; }
+    
+    public int Filtro { get; set; }
     public List<Grupos> Listagrupo = new  List<Grupos>();
 
     public List<Asistencia> lista { get; set; } = new List<Asistencia>();
      [Inject]
     public AsistenciaBLL asistenciaBLL { get; set; }
-
+    [Inject]
+    public TodoBLLModelCreating todoBLLModelCreating{ get; set; }
+    
     protected override void OnInitialized()
     {
           asistencia.AsistenciaId=ID;
@@ -228,10 +227,21 @@
     }
 
     private void RemoverFila(AsistenciaDetalle  item)
-
     {
-    
-        this.asistencia.asistenciadetalle.Remove(item);
+        
+      cantidad=1;
+        if(item.Asistio==true)
+       {
+             asistencia.Presente-=1;
+             this.asistencia.asistenciadetalle.Remove(item);
+           
+       }else{
+           
+          asistencia.Ausente-=1;
+         this.asistencia.asistenciadetalle.Remove(item);
+           
+       }
+      
 
     }
 
@@ -251,58 +261,104 @@
     public void Nuevo()
     {
         asistencia= new Asistencia();
-        Detalle= new AsistenciaDetalle(0,0,"");
+        Detalle= new AsistenciaDetalle(0,0,false,"",0,0);
         
     }
     public void Guardar()
     {    
-        if(string.IsNullOrEmpty(asistencia.Presente))
-        {
-            asistencia.GrupoId=grupos.GrupoId;
-            asistencia.Presente=" ";
-            if(asistenciaBLL.insertar(asistencia))
-            {
-                toast.ShowSuccess("Se a Guardar el producto");
-            }else{
-                    
-                toast.ShowError("No se a Guardado");
-            } 
+         Estudiantes? encontrado =todoBLLModelCreating.Buscar(this.Detalle.EstudianteId);
             
-        }else{
-             asistencia.GrupoId=grupos.GrupoId;
-             asistencia.Ausentes=" ";
+        if(encontrado != null){
+              this.estudiantes=encontrado;
+             
+                   
+                 lista=asistenciaBLL.GetList(c => true);
+                   todoBLLModelCreating.Modificarpararestar(estudiantes,asistencia);
+        }
+        
             if(asistenciaBLL.insertar(asistencia))
             {
-                toast.ShowSuccess("Se a Guardar el producto");
+                
+               toast.ShowSuccess("Se ha guardado correctamente");
+       
+                Nuevo();
+             
             }else{
                     
-                toast.ShowError("No se a Guardado");
-            } 
-
-        }
-         
+                toast.ShowError("No se ha Guardado");
+            }
+        
     }
+  
     public void Eliminar()
     {
-        if (!asistenciaBLL.Eliminar(asistencia.AsistenciaId))
+        if (asistenciaBLL.Eliminar(asistencia.AsistenciaId))
         {
-           
-               toast.ShowError("No se pudo elimini con exito");
+            Nuevo();
+            toast.ShowSuccess("Se ha eliminado con exito"); 
+         
 
         }
         else
         {
-            toast.ShowSuccess("Se a eliminado con exito"); 
-
+           
+              toast.ShowError("No se pudo eliminar con exito");
         }
     }
+    
     public void Agregardetalle()
     {
+       
+        cantidad=0;
      
-      asistencia.asistenciadetalle.Add(new AsistenciaDetalle (asistencia.AsistenciaId,Detalle.EstudianteId=estudiantes.EstudianteId,Detalle.Asistio));
-      lista = asistenciaBLL.GetList(c => true);
-        
-              
+         Estudiantes? encontrado =todoBLLModelCreating.Buscar(this.Detalle.EstudianteId);
+          
+            if(encontrado != null)
+         
+                if(Filtro==1){
+                Detalle.Asistio=true;
+                }else
+                if(Filtro==2)
+                {
+                Detalle.Asistio=false;
+                }
+
+
+                    if(Filtro==1 && Detalle.EstudianteId>=1  || Filtro==2 && Detalle.EstudianteId>=1 ){
+                        var encontrados =asistenciaBLL.VerificarEstudianteRepetido(asistencia,Detalle);
+                           if(!encontrados){
+                                if(Detalle.Asistio==true)
+                                {
+                                    cantidad=1;
+                                    
+                                    asistencia.Presente+=cantidad++;
+                                    
+                                    
+                                }else{
+                                    cantidad=1;
+                                    asistencia.Ausente+=cantidad++;
+                                
+                                
+                                    
+                                }
+                                
+                                
+                                    
+                                asistencia.asistenciadetalle.Add(new AsistenciaDetalle (asistencia.AsistenciaId,Detalle.EstudianteId,Detalle.Asistio,Detalle.Nombre=encontrado.Nombre,Detalle.Presente,Detalle.Ausente));
+                                lista =asistenciaBLL.GetList(c => true); 
+                            }else{
+                    
+
+                    toast.ShowError("Esta repetido"); 
+                               }
+                
+                }else{
+                    
+
+                    toast.ShowError("Tiene que colocar si o no y un estudiante"); 
+                }
+           
+       
     }
    
     

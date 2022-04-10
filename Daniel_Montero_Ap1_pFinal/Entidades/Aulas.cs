@@ -10,9 +10,9 @@ namespace Daniel_Montero_Ap1_pFinal.Entidades
 
         [Range(0,int.MaxValue,ErrorMessage ="El Id tiene que ser 0")]
         public int AulaId {get; set;}
-       
+        [Required(ErrorMessage ="Es obligatorio introducir un Nombre")]
         public string? Nombre { get; set; }
-        public int VecesAsignada {get; set; }
+    
      
    
 

@@ -54,13 +54,7 @@
                             <InputText class="form-control" @bind-Value="curso.Descripcion" />
                             <ValidationMessage For="@(() =>curso.Descripcion)" />
                         </div>
-                        @* Exitencia *@
-                        <div class="form-group">
-                            <label>Veces Inscrito</label>
-                            <InputNumber class="form-control" @bind-Value="curso.VecesInscrito" />
-                            <ValidationMessage For="@(() =>curso.VecesInscrito)" />
-                        </div>
-                        @* Costo *@
+                      
                     </form>
                     <div class="card-footer">
 
@@ -124,23 +118,25 @@
         
          if(cursoBLL.insertar(curso))
         {
-            toast.ShowSuccess("Se a Guardar el producto");
+             Nuevo();
+            toast.ShowSuccess("Se ha Guardar el producto");
         }else{
                 
-            toast.ShowError("No se a Guardado");
+            toast.ShowError("No se ha Guardado");
         } 
     }
     public void Eliminar()
     {
-        if (!cursoBLL.Eliminar(curso.CursoId))
+        if (cursoBLL.Eliminar(curso.CursoId))
         {
-           
-               toast.ShowError("No se pudo elimini con exito");
+              Nuevo();
+              toast.ShowSuccess("Se a eliminado con exito"); 
+               
 
         }
         else
         {
-            toast.ShowSuccess("Se a eliminado con exito"); 
+          toast.ShowError("No se pudo eliminar con exito"); 
 
         }
     }

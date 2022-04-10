@@ -16,12 +16,27 @@
 
         <div class="card-body">
             <form>
+                  <div class="container">
+
+
+                        
+
+                        <div>
+                            <label>Desde</label>
+                            <InputDate class="form-control" @bind-Value="FechaDesde" name="DataPickerDesde" />
+                        </div>
+
+                        <div>
+                            <label>Hasta</label>
+                            <InputDate class="form-control" @bind-Value="FechaHasta" name="DataPickerDesde" />
+                        </div>
+                    </div>
                 <div class="input-group d-flex align-items-end">
                     <div class="flex-fill mx-2">
                         <label>Filtro</label>
                         <select class="form-control col-2" @bind="Filtro">
                             <option value="0"></option>
-                            <option value="1">Id</option>
+                            <option value="1">Id y Fecha</option>
                             <option value="2">Grupo</option>
                             <option value="3">Fecha</option>
                         </select>
@@ -50,8 +65,9 @@
                     <th>Asistencia Id</th>
                     <th>Grupo Id</th>
                     <th>Presente</th>
-                    <th>Ausente</th>
                     <th>Fecha</th>
+                    <th>Presente</th>
+                    <th>Ausente</th>
                     <th>Vista <span class="oi oi-eye"></span> </th>
                 </tr>
             </thead>
@@ -62,8 +78,9 @@
                         <td>@item.AsistenciaId</td>
                         <td>@item.GrupoId</td>
                         <td>@item.Presente</td>
-                        <td>@item.Ausentes</td>
                         <td>@item.Fecha</td>
+                        <td>@item.Presente</td>
+                        <td>@item.Ausente</td>
                         <td><a class="btn btn-sm btn-outline-primary oi oi-eye" href="R_Asistencia/@item.AsistenciaId">Ver</a></td>
                         
                     </tr>
@@ -85,13 +102,15 @@
 
     public string? Filtro { get; set; }
     public string? Criterio { get; set; }
+
+     public  DateTime FechaHasta { get; set; }= DateTime.Now;
+    public  DateTime FechaDesde { get; set; }= DateTime.Now;
     public void Buscar()
     {
         lista =asistenciaBLL.GeLista();
+       
 
-
-        if (Criterio != null)
-
+        if (Criterio != null || FechaHasta!= null || FechaDesde!=null)
         {
 
             switch (Filtro)
@@ -107,7 +126,7 @@
                 case "1":
 
 
-                    lista = asistenciaBLL.GetList(l => l.AsistenciaId.ToString() == (Criterio));
+                    lista = asistenciaBLL.GetList(l => l.AsistenciaId.ToString() == (Criterio)&& l.Fecha>= FechaDesde && l.Fecha <= FechaHasta);
 
 
                     break;
@@ -119,8 +138,8 @@
                     break;
 
                  case "3":
-                    
-                    lista =asistenciaBLL.GetList(l => l.Fecha.ToString().ToLower().Contains(Criterio.ToLower()));
+                
+                  lista = asistenciaBLL.GetList(l => l.Fecha>= FechaDesde && l.Fecha <= FechaHasta);
                     break;
 
 
@@ -130,11 +149,10 @@
             }
 
         }
-
         else
 
         {
-
+            
             lista =asistenciaBLL.GetList(t => true);
 
         }

@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <form>
 
-                        @*Producto id*@
+                        @*Aulas id*@
 
                         <div class="form-row align-items-center">
 
@@ -49,19 +49,13 @@
                         </div>
 
 
-                        @* Descricion *@
+                        @* Nombre *@
                         <div class="form-group">
                             <label>Nombre</label>
                             <InputText class="form-control" @bind-Value="aulas.Nombre" />
                             <ValidationMessage For="@(() =>aulas.Nombre)" />
                         </div>
-                        @* Exitencia *@
-                        <div class="form-group">
-                            <label>Veces Asignada</label>
-                            <InputNumber class="form-control" @bind-Value="aulas.VecesAsignada" />
-                            <ValidationMessage For="@(() =>aulas.VecesAsignada)" />
-                        </div>
-                        @* Costo *@
+                      
                     </form>
                     <div class="card-footer">
 
@@ -127,23 +121,26 @@
         
          if(aulasBLL.insertar(aulas))
         {
-            toast.ShowSuccess("Se a Guardar el producto");
+             Nuevo();
+            toast.ShowSuccess("Se ha Guardar el producto");
+           
         }else{
                 
-            toast.ShowError("No se a Guardado");
+            toast.ShowError("No se ha Guardado");
         } 
     }
     public void Eliminar()
     {
-        if (!aulasBLL.Eliminar(aulas.AulaId))
+        if (aulasBLL.Eliminar(aulas.AulaId))
         {
+            Nuevo();
+            toast.ShowSuccess("Se ha eliminado con exito"); 
            
-               toast.ShowError("No se pudo elimini con exito");
 
         }
         else
         {
-            toast.ShowSuccess("Se a eliminado con exito"); 
+               toast.ShowError("No se pudo eliminar con exito");
 
         }
     }

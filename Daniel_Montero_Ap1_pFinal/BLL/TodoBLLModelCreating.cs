@@ -17,6 +17,58 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
         {
             contexto = _contexto;
         }
+        public bool Modificarpararestar(Estudiantes estudiantes,Asistencia asistencia)
+        {
+            bool paso = false;
+            
+            try
+            {
+                 foreach(var item in asistencia.asistenciadetalle){
+                  
+                 Estudiantes? encontrado =contexto.Estudiantes.Find(item.EstudianteId);
+                     if(encontrado != null)
+                    if(item.Asistio==true){
+                    encontrado.Presente+=1;
+                    encontrado.Ausente+=0;
+                    }else
+                    if(item.Asistio==false)
+                    {
+                        encontrado.Ausente+=1;
+                        encontrado.Presente+=0;
+                    }
+            
+
+                
+
+                contexto.Entry(encontrado).State = EntityState.Modified; 
+
+                paso = contexto.SaveChanges() > 0;
+                 }
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
+        }
+       public Estudiantes? Buscar(int AulaId)
+        {
+
+            Estudiantes? aulas
+            ;
+            try
+            {
+                aulas = contexto.Estudiantes.Find(AulaId);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return aulas;
+        }
        
           public List<Estudiantes> GetListEstudiantes(Expression<Func<Estudiantes, bool>> criterio)
         {

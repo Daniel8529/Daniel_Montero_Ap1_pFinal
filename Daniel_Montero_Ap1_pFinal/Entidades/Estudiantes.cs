@@ -19,6 +19,9 @@ namespace Daniel_Montero_Ap1_pFinal.Entidades
 
         public string? Email { get; set; }
 
+        public int Presente{ get; set; }
+        public int Ausente { get; set; }
+
 
 
     }
