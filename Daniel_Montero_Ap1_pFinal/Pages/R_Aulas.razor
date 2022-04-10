@@ -1,0 +1,150 @@
+@page "/R_Aulas"
+@page "/R_Aulas/{ID:int}" 
+
+@inject IToastService toast 
+
+<EditForm Model="aulas" OnValidSubmit="Guardar">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div className="container">
+         <div class="card align-items-center">
+            <div class="card">
+
+
+                <div class="card-header">
+                    <h3>Registro de Aulas</h3>
+                </div>
+
+
+                <div class="card-body">
+                    <form>
+
+                        @*Aulas id*@
+
+                        <div class="form-row align-items-center">
+
+                            <div class="col">
+
+                                <div class="form-group">
+
+                                    <label>AulasID</label>
+
+                                    <div class="input-group">
+
+                                        <InputNumber @bind-Value="aulas.AulaId" class="form-control col-4" />
+
+                                        <div>
+
+                                            <button type="button" class="btn btn-primary input-group-text"
+                                                @onclick="Buscar">Buscar</button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        @* Nombre *@
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <InputText class="form-control" @bind-Value="aulas.Nombre" />
+                            <ValidationMessage For="@(() =>aulas.Nombre)" />
+                        </div>
+                      
+                    </form>
+                    <div class="card-footer">
+
+                        <div class="form-group text-center" display: inline-block>
+
+                            <button type="button" class="btn btn-lg btn-primary" @onclick="Nuevo">Nuevo</button>
+
+                            <button type="submit" class="btn btn-lg btn-success">Guardar</button>
+
+                            <button type="button" class="btn btn-lg btn-danger" @onclick="Eliminar">Eliminar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</EditForm>
+
+@code {
+    [Parameter]
+    public int ID  { get; set; }
+    public Aulas aulas {set;get;}= new Aulas();
+    public List<Aulas> lista { get; set; } = new List<Aulas>();
+  
+     [Inject]
+    public AulasBLL aulasBLL{ get; set; }
+    protected override void OnInitialized()
+    {
+        
+        aulas.AulaId=ID;
+         lista=aulasBLL.GetList(c => true);
+        Buscar();
+
+    }
+
+  
+
+    public void Buscar()
+    {
+        Aulas? encontrado =aulasBLL.Buscar(aulas.AulaId);
+       
+        if (encontrado != null)
+        {
+          this.aulas= encontrado;
+     @*      this.asistencia.asistenciadetalle=encontrado; *@
+        }
+        else
+        {
+        
+        }
+    }
+    public void Nuevo()
+    {
+        aulas= new Aulas();
+      
+        
+    }
+    public void Guardar()
+    {    
+        
+         if(aulasBLL.insertar(aulas))
+        {
+             Nuevo();
+            toast.ShowSuccess("Se ha Guardar el producto");
+           
+        }else{
+                
+            toast.ShowError("No se ha Guardado");
+        } 
+    }
+    public void Eliminar()
+    {
+        if (aulasBLL.Eliminar(aulas.AulaId))
+        {
+            Nuevo();
+            toast.ShowSuccess("Se ha eliminado con exito"); 
+           
+
+        }
+        else
+        {
+               toast.ShowError("No se pudo eliminar con exito");
+
+        }
+    }
+  
+   
+    
+}
