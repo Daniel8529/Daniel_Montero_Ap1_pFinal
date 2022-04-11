@@ -22,8 +22,7 @@
                         <select class="form-control col-2" @bind="Filtro">
                             <option value="0"></option>
                             <option value="1">Id</option>
-                            <option value="2">Asistio</option>
-                            <option value="3">Nombre</option>
+                            <option value="2">Nombre</option>
                       
 
                         </select>
@@ -142,16 +141,9 @@
                     lista =asistenciaBLL.GetListAsistenciaDetalle(l => l.Id.ToString() == (Criterio));
 
 
-                    break;
-
-
-                case "2":
-
-                    
-                    lista =asistenciaBLL.GetListAsistenciaDetalle(l => l.Asistio==(true)); 
-                    break;
+                    break;;
                 
-                case "3":
+                case "2":
 
                     lista =asistenciaBLL.GetListAsistenciaDetalle(l => l.Nombre.ToLower().Contains(Criterio.ToLower()));
                  break;

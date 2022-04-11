@@ -7,7 +7,9 @@ namespace Daniel_Montero_Ap1_pFinal.Entidades
 
    public class AsistenciaDetalle{
         [Key]
+        [Range(0,int.MaxValue,ErrorMessage ="El Id tiene que ser 0")]
         public int Id {get; set;}
+
         [Range(0,int.MaxValue,ErrorMessage ="El Id tiene que ser 0")]
         public int AsistenciaId { get; set; }
         
