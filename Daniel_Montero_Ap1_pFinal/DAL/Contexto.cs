@@ -9,7 +9,7 @@ namespace Daniel_Montero_Ap1_pFinal.DAL
 
         public DbSet<Asistencia> Asistencia{get; set;}
         
-        public DbSet<AsistenciaDetalle> AsistenciaDetalles{get; set;}
+        public DbSet<AsistenciaDetalle> AsistenciaDetalle{get; set;}
 
         public DbSet<Aulas> Aulas{ get; set;}
       
@@ -62,7 +62,7 @@ namespace Daniel_Montero_Ap1_pFinal.DAL
               );
                modelBuilder.Entity<Estudiantes>().HasData(new Estudiantes{
                   EstudianteId=1,
-                  Nombre="Marioa",
+                  Nombre="Mario",
                   Apellido="Teto",
                   Sexo="M",
                   Direccion="Teteo ramirez#57",

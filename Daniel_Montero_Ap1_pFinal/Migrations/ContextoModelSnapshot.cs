@@ -72,7 +72,7 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
 
                     b.HasIndex("AsistenciaId");
 
-                    b.ToTable("AsistenciaDetalles");
+                    b.ToTable("AsistenciaDetalle");
                 });
 
             modelBuilder.Entity("Daniel_Montero_Ap1_pFinal.Entidades.Aulas", b =>
@@ -147,7 +147,7 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                             Ausente = 0,
                             Direccion = "Teteo ramirez#57",
                             Email = "Teteo57@gmail.com",
-                            Nombre = "Marioa",
+                            Nombre = "Mario",
                             Presente = 0,
                             Sexo = "M",
                             Telefono = 809028329

@@ -7,8 +7,7 @@ namespace Daniel_Montero_Ap1_pFinal.Entidades
 
    public class Asistencia{
         [Key]
-        
-       [Range(0,int.MaxValue,ErrorMessage ="El Id tiene que ser 0")]
+      [Range(0,int.MaxValue,ErrorMessage ="El id tiene que ser mayor a cero")]
        public int AsistenciaId {get; set;}
      
       public  DateTime Fecha { get; set; }= DateTime.Now;
@@ -21,7 +20,8 @@ namespace Daniel_Montero_Ap1_pFinal.Entidades
         public int Ausente {get; set ;}
 
         public int estudianteId {get; set ;}
-      
+        
+        [ForeignKey("AsistenciaId")]
         public virtual List<AsistenciaDetalle> asistenciadetalle {get; set;} = new List<AsistenciaDetalle>();
 
    }

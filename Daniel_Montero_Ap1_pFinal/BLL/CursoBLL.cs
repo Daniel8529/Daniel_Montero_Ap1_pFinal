@@ -88,6 +88,24 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
             }
             return paso;
         }
+          public bool Existes(string Descripcion)
+        {
+            bool encontrado = false;
+
+            try
+            {
+
+                encontrado = contexto.Curso.Any(e => e.Descripcion.ToLower()== Descripcion.ToLower());
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return encontrado;
+
+        }
         public bool Eliminar(int id)
         {
             bool paso = false;

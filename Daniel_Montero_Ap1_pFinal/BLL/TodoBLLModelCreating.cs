@@ -36,9 +36,40 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
                         encontrado.Ausente+=1;
                         encontrado.Presente+=0;
                     }
-            
-
                 
+
+                contexto.Entry(encontrado).State = EntityState.Modified; 
+
+                paso = contexto.SaveChanges() > 0;
+                 }
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return paso;
+        }
+         public bool Modificarparaeliminar(Estudiantes estudiantes,Asistencia asistencia)
+        {
+            bool paso = false;
+            
+            try
+            {
+                 foreach(var item in asistencia.asistenciadetalle){
+                  
+                 Estudiantes? encontrado =contexto.Estudiantes.Find(item.EstudianteId);
+                     if(encontrado != null)
+                    if(item.Asistio==true){
+                    encontrado.Presente-=1;
+                    encontrado.Ausente-=0;
+                    }else
+                    if(item.Asistio==false)
+                    {
+                        encontrado.Ausente-=1;
+                        encontrado.Presente-=0;
+                    }
 
                 contexto.Entry(encontrado).State = EntityState.Modified; 
 

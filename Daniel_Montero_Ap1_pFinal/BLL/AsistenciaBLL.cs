@@ -40,7 +40,8 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
             Asistencia? asistencia;
             try
             {
-                asistencia = contexto.Asistencia.Include(D=> D.asistenciadetalle) .Where(A => A.AsistenciaId==AsistenciaId).AsNoTracking().SingleOrDefault();
+                
+                asistencia = contexto.Asistencia.Include(D=> D.asistenciadetalle) .Where(A => A.AsistenciaId==AsistenciaId).FirstOrDefault();
             }
             catch (Exception)
             {
@@ -180,7 +181,7 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
             List<AsistenciaDetalle> lista = new List<AsistenciaDetalle>();
             try
             {
-                lista = contexto.AsistenciaDetalles.Where(criterio).ToList();
+                lista = contexto.AsistenciaDetalle.Where(criterio).ToList();
             }
             catch (Exception)
             {
@@ -197,7 +198,7 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
         }
          public List<AsistenciaDetalle> GeListaAsistenciaDetalle()
         {
-            return contexto.AsistenciaDetalles.ToList();
+            return contexto.AsistenciaDetalle.ToList();
 
         }
     }

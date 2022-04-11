@@ -22,7 +22,7 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
             bool paso = false;
             try
             {
-                 if ( Existes(inseta.AulaId)&&Existes(inseta.Nombre))
+                 if ( Existes(inseta.AulaId))
                     return Modificar(inseta);
                 else
                 contexto.Aulas.Add(inseta);
@@ -75,7 +75,7 @@ namespace Daniel_Montero_Ap1_pFinal.BLL
             try
             {
 
-                encontrado = contexto.Aulas.Any(e => e.Nombre== Nombre);
+                encontrado = contexto.Aulas.Any(e => e.Nombre.ToLower()== Nombre.ToLower());
 
             }
             catch (Exception)

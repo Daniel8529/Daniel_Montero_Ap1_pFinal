@@ -95,17 +95,20 @@
 
     public void Buscar()
     {
-        Curso? encontrado =cursoBLL.Buscar(curso.CursoId);
-       
-        if (encontrado != null)
-        {
-          this.curso= encontrado;
-     @*      this.asistencia.asistenciadetalle=encontrado; *@
-        }
-        else
-        {
+    if(curso.CursoId>0){
+            Curso? encontrado =cursoBLL.Buscar(curso.CursoId);
         
-        }
+            if (encontrado != null)
+            {
+            this.curso= encontrado;
+        @*      this.asistencia.asistenciadetalle=encontrado; *@
+            }
+            else
+            {
+                 toast.ShowError("No se encontro ");
+            
+            }
+     }
     }
     public void Nuevo()
     {
@@ -115,15 +118,19 @@
     }
     public void Guardar()
     {    
-        
-         if(cursoBLL.insertar(curso))
-        {
-             Nuevo();
-            toast.ShowSuccess("Se ha Guardar el producto");
+        if(!cursoBLL.Existes(curso.Descripcion) || cursoBLL.Existes(curso.Descripcion)){
+            if(cursoBLL.insertar(curso))
+            {
+                Nuevo();
+                toast.ShowSuccess("Se ha Guardar el curso");
+            }else{
+                    
+                toast.ShowError("No se ha Guardado");
+            } 
         }else{
-                
-            toast.ShowError("No se ha Guardado");
-        } 
+                    
+                toast.ShowError("Ya existe este Descripcion");
+            }     
     }
     public void Eliminar()
     {

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Daniel_Montero_Ap1_pFinal.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20220411004548_Inicial")]
+    [Migration("20220411225004_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,7 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
 
                     b.HasIndex("AsistenciaId");
 
-                    b.ToTable("AsistenciaDetalles");
+                    b.ToTable("AsistenciaDetalle");
                 });
 
             modelBuilder.Entity("Daniel_Montero_Ap1_pFinal.Entidades.Aulas", b =>
@@ -149,7 +149,7 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                             Ausente = 0,
                             Direccion = "Teteo ramirez#57",
                             Email = "Teteo57@gmail.com",
-                            Nombre = "Marioa",
+                            Nombre = "Mario",
                             Presente = 0,
                             Sexo = "M",
                             Telefono = 809028329

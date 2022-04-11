@@ -120,7 +120,7 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AsistenciaDetalles",
+                name: "AsistenciaDetalle",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -134,9 +134,9 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AsistenciaDetalles", x => x.Id);
+                    table.PrimaryKey("PK_AsistenciaDetalle", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AsistenciaDetalles_Asistencia_AsistenciaId",
+                        name: "FK_AsistenciaDetalle_Asistencia_AsistenciaId",
                         column: x => x.AsistenciaId,
                         principalTable: "Asistencia",
                         principalColumn: "AsistenciaId",
@@ -146,7 +146,7 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
             migrationBuilder.InsertData(
                 table: "Estudiantes",
                 columns: new[] { "EstudianteId", "Apellido", "Ausente", "Direccion", "Email", "Nombre", "Presente", "Sexo", "Telefono" },
-                values: new object[] { 1, "Teto", 0, "Teteo ramirez#57", "Teteo57@gmail.com", "Marioa", 0, "M", 809028329 });
+                values: new object[] { 1, "Teto", 0, "Teteo ramirez#57", "Teteo57@gmail.com", "Mario", 0, "M", 809028329 });
 
             migrationBuilder.InsertData(
                 table: "Estudiantes",
@@ -199,15 +199,15 @@ namespace Daniel_Montero_Ap1_pFinal.Migrations
                 values: new object[] { 2, 2, "Luigi" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AsistenciaDetalles_AsistenciaId",
-                table: "AsistenciaDetalles",
+                name: "IX_AsistenciaDetalle_AsistenciaId",
+                table: "AsistenciaDetalle",
                 column: "AsistenciaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AsistenciaDetalles");
+                name: "AsistenciaDetalle");
 
             migrationBuilder.DropTable(
                 name: "Aulas");

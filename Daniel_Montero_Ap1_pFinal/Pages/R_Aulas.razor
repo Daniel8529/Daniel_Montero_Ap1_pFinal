@@ -97,17 +97,19 @@
   
 
     public void Buscar()
-    {
-        Aulas? encontrado =aulasBLL.Buscar(aulas.AulaId);
-       
-        if (encontrado != null)
+    { if (this.aulas.AulaId> 0)
         {
-          this.aulas= encontrado;
-     @*      this.asistencia.asistenciadetalle=encontrado; *@
-        }
-        else
-        {
+            Aulas? encontrado =aulasBLL.Buscar(aulas.AulaId);
         
+            if (encontrado != null)
+            {
+            this.aulas= encontrado;
+        @*      this.asistencia.asistenciadetalle=encontrado; *@
+            }
+            else
+            {
+               toast.ShowError("No se encontro ");
+            }
         }
     }
     public void Nuevo()
@@ -118,16 +120,21 @@
     }
     public void Guardar()
     {    
-        
-         if(aulasBLL.insertar(aulas))
-        {
-             Nuevo();
-            toast.ShowSuccess("Se ha Guardar el producto");
-           
+         
+        if(!aulasBLL.Existes(aulas.Nombre) || aulasBLL.Existes(aulas.AulaId)){
+            if(aulasBLL.insertar(aulas))
+            {
+                Nuevo();
+                toast.ShowSuccess("Se ha Guardar el nombre ");
+            
+            }else{
+                    
+                toast.ShowError("No se ha Guardado");
+            }
         }else{
-                
-            toast.ShowError("No se ha Guardado");
-        } 
+                    
+                toast.ShowError("Ya existe este nombre");
+            }
     }
     public void Eliminar()
     {

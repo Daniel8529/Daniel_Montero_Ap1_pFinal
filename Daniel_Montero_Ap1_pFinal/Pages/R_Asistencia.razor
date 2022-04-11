@@ -104,10 +104,10 @@
                                 
                                    
                                     <div class="flex-fill mx-2">
-                                        <label>EstudianteId</label>
+                                        <label>Estudiante</label>
                                        
                                
-                                        <InputSelect class="form-control col-2" @bind-Value="Detalle.EstudianteId">
+                                        <InputSelect class="form-select text-14" @bind-Value="Detalle.EstudianteId">
                                               
                                                 @foreach (var item in Listaestudiante)
                                                 {
@@ -223,6 +223,7 @@
           Listaestudiante= asistenciaBLL.GetListEstudiante(c => true);
           Listagrupo= asistenciaBLL.GetListGrupos(c => true);
         Buscar();
+        
 
     }
 
@@ -247,15 +248,18 @@
 
     public void Buscar()
     {
-        Asistencia? encontrado =asistenciaBLL.Buscar(this.asistencia.AsistenciaId);
-       
-        if (encontrado != null)
+      if (this.asistencia.AsistenciaId> 0)
         {
-          this.asistencia= encontrado;
-        }
-        else
-        {
+            Asistencia? encontrado =asistenciaBLL.Buscar(this.asistencia.AsistenciaId);
         
+            if (encontrado != null)
+            {
+            this.asistencia= encontrado;
+            }
+            else
+            {
+                 toast.ShowError("No se encontro ");
+            }
         }
     }
     public void Nuevo()
@@ -289,11 +293,28 @@
             }
         
     }
+     public void eliminadoDetalle()
+    {   
+        Asistencia? encontrados =asistenciaBLL.Buscar(this.asistencia.AsistenciaId);
+        
+            if (encontrados != null)
+            
+            this.asistencia= encontrados;
+             Estudiantes? encontrado =todoBLLModelCreating.Buscar(this.asistencia.AsistenciaId);
+            
+        if(encontrado != null)
+              this.estudiantes=encontrado;
+            todoBLLModelCreating.Modificarparaeliminar(estudiantes,asistencia);
+    }
+    
   
     public void Eliminar()
-    {
+    {  
+        
+ 
         if (asistenciaBLL.Eliminar(asistencia.AsistenciaId))
         {
+            eliminadoDetalle();
             Nuevo();
             toast.ShowSuccess("Se ha eliminado con exito"); 
          
@@ -349,7 +370,7 @@
                             }else{
                     
 
-                    toast.ShowError("Esta repetido"); 
+                    toast.ShowError("ya se ha agregado ese estudiante"); 
                                }
                 
                 }else{
